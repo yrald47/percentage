@@ -29,12 +29,13 @@ for current_progress in range(total_progress + 1):
     # Masukkan ke dalam csv untuk melihat hasilnya
     if current_progress < total_progress:
         f.write(heroes[current_progress]['name'] + ";" + str(heroes[current_progress]['birth_year']) + ";" + str(heroes[current_progress]['death_year']) + ";" + str(heroes[current_progress]['ascension_year']) + ";" + heroes[current_progress]['description'] + "\n")
+        print(heroes[current_progress]['name'])
     
     prog = str(current_progress) + "/" + str(total_progress) + " heroes loaded [" + "."*dot + " "*space + "] " + str("{:.2f}".format(percentage)) + "%"
     print(prog, end = "\r") # Tampilkan current progress
-    time.sleep(0.001) #karena data cuma 191, progressnya ga keliatan, jadi di-sleep dikit
+    time.sleep(0.025) # Karena data cuma 191, progressnya kecepetan, ga keliatan, jadi di-sleep dikit
 
-    print(CLEAR_CURRENT_LINE, LINE_UP) # CLEAR CURRENT LINE. LINE UP, THEN \n
+    print(CLEAR_CURRENT_LINE, LINE_UP, end = CLEAR_CURRENT_LINE) # CLEAR CURRENT LINE. LINE UP, THEN \n
 # f.close()
 print(prog) # Pertahankan status progres terakhir
 print("DONE, RESULTS WRITE IN " + path + "/" + filename)
