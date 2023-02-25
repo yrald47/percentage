@@ -46,9 +46,9 @@ for current_progress in range(total_progress + 1):
 
     prog = str(current_progress) + "/" + str(total_progress) + " heroes loaded [" + colored_dot + " "*space + "] " + str("{:.2f}".format(percentage)) + "%"
     print(prog, end = "\r") # Tampilkan current progress
-    time.sleep(0.025) # Karena data cuma 191, progressnya kecepetan, ga keliatan, jadi di-sleep dikit
+    time.sleep(0.005) # Karena data cuma 191, progressnya kecepetan, ga keliatan, jadi di-sleep dikit
 
-    print(CLEAR_CURRENT_LINE, LINE_UP, CLEAR_CURRENT_LINE, end = "\r") # CLEAR CURRENT LINE. LINE UP, THEN \n
+    print(CLEAR_CURRENT_LINE, LINE_UP, CLEAR_CURRENT_LINE, end = "\r") # CLEAR CURRENT LINE. LINE UP AND CLEAR THEN \r
 # f.close()
 print("\n" + prog) # Pertahankan status progres terakhir
 print("DONE, RESULTS WRITE IN " + path + "/" + filename)
