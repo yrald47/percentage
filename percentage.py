@@ -2,6 +2,8 @@ import requests
 import math
 import time
 import pandas as pd
+from sty import fg, bg, ef, rs
+from sty import Style, RgbFg, RgbBg
 
 # ANIMASI SEDERHANA PERSENTASE PROGRESS BAR
 LINE_UP = '\33[1A'
@@ -31,7 +33,18 @@ for current_progress in range(total_progress + 1):
         f.write(heroes[current_progress]['name'] + ";" + str(heroes[current_progress]['birth_year']) + ";" + str(heroes[current_progress]['death_year']) + ";" + str(heroes[current_progress]['ascension_year']) + ";" + heroes[current_progress]['description'] + "\n")
         print(heroes[current_progress]['name'])
     
-    prog = str(current_progress) + "/" + str(total_progress) + " heroes loaded [" + "."*dot + " "*space + "] " + str("{:.2f}".format(percentage)) + "%"
+    fg.orange = Style(RgbFg(255, 150, 50)) # declare orange color
+    bg.orange = Style(RgbBg(255, 150, 50)) # declare orange color
+    colored_dot = bg.orange + fg.orange + "."*dot + fg.rs + bg.rs
+    if percentage == 100.0:
+        colored_dot = bg.blue + fg.blue + "."*dot + fg.rs + bg.rs
+    elif percentage >= 90.0:
+        colored_dot = bg.green + fg.green + "."*dot + fg.rs + bg.rs
+    elif percentage >= 50.0:
+        colored_dot = bg.yellow + fg.yellow + "."*dot + fg.rs + bg.rs
+        
+
+    prog = str(current_progress) + "/" + str(total_progress) + " heroes loaded [" + colored_dot + " "*space + "] " + str("{:.2f}".format(percentage)) + "%"
     print(prog, end = "\r") # Tampilkan current progress
     time.sleep(0.025) # Karena data cuma 191, progressnya kecepetan, ga keliatan, jadi di-sleep dikit
 
