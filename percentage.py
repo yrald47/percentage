@@ -35,7 +35,7 @@ for current_progress in range(total_progress + 1):
     print(prog, end = "\r") # Tampilkan current progress
     time.sleep(0.025) # Karena data cuma 191, progressnya kecepetan, ga keliatan, jadi di-sleep dikit
 
-    print(CLEAR_CURRENT_LINE, LINE_UP, end = CLEAR_CURRENT_LINE) # CLEAR CURRENT LINE. LINE UP, THEN \n
+    print(CLEAR_CURRENT_LINE, LINE_UP, CLEAR_CURRENT_LINE, end = "\r") # CLEAR CURRENT LINE. LINE UP, THEN \n
 # f.close()
-print(prog) # Pertahankan status progres terakhir
+print("\n" + prog) # Pertahankan status progres terakhir
 print("DONE, RESULTS WRITE IN " + path + "/" + filename)
